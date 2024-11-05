@@ -1,0 +1,26 @@
+{
+    "sourceFile": "react-grid-project/src/child.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1730842372421,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1730844225552,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,18 +1,19 @@\n-// Child.js\n import React, { useState } from 'react';\n+import { useCellContext } from './CellContext';\n \n-const Cell = ({ toggleCounter }) => {\n+const Cell = () => {\n   const [isActive, setIsActive] = useState(false);\n+  const { toggleCell } = useCellContext();\n \n-  const toggleCell = () => {\n-    setIsActive(prevState => !prevState);\n-    toggleCounter(!isActive);\n+  const handleClick = () => {\n+    setIsActive(!isActive);\n+    toggleCell(!isActive);\n   };\n \n   return (\n     <div\n-      onClick={toggleCell}\n+      onClick={handleClick}\n       style={{\n         width: '100px',\n         height: '100px',\n         backgroundColor: isActive ? 'black' : 'white',\n"
+                },
+                {
+                    "date": 1730844354615,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,19 +1,17 @@\n import React, { useState } from 'react';\n-import { useCellContext } from './CellContext';\n \n-const Cell = () => {\n+const Cell = ({ toggleCounter }) => {\n   const [isActive, setIsActive] = useState(false);\n-  const { toggleCell } = useCellContext();\n \n-  const handleClick = () => {\n-    setIsActive(!isActive);\n-    toggleCell(!isActive);\n+  const toggleCell = () => {\n+    setIsActive(prevState => !prevState);\n+    toggleCounter(!isActive);\n   };\n \n   return (\n     <div\n-      onClick={handleClick}\n+      onClick={toggleCell}\n       style={{\n         width: '100px',\n         height: '100px',\n         backgroundColor: isActive ? 'black' : 'white',\n"
+                }
+            ],
+            "date": 1730842372421,
+            "name": "Commit-0",
+            "content": "// Child.js\nimport React, { useState } from 'react';\n\nconst Cell = ({ toggleCounter }) => {\n  const [isActive, setIsActive] = useState(false);\n\n  const toggleCell = () => {\n    setIsActive(prevState => !prevState);\n    toggleCounter(!isActive);\n  };\n\n  return (\n    <div\n      onClick={toggleCell}\n      style={{\n        width: '100px',\n        height: '100px',\n        backgroundColor: isActive ? 'black' : 'white',\n        border: '1px solid grey',\n        cursor: 'pointer',\n      }}\n    />\n  );\n};\n\nexport default Cell;\n"
+        }
+    ]
+}

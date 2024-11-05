@@ -1,0 +1,22 @@
+{
+    "sourceFile": "react-grid-project/src/GridContext.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1730843969242,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1730844072453,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,19 +1,21 @@\n+// GridContext.js\n import React, { createContext, useContext, useState } from 'react';\n \n-const CellContext = createContext();\n+const GridContext = createContext();\n \n-export const CellProvider = ({ children }) => {\n-  const [activeCount, setActiveCount] = useState(0);\n+export const GridProvider = ({ children }) => {\n+  const [activeCells, setActiveCells] = useState(0);\n \n-  const toggleCell = (isActivated) => {\n-    setActiveCount(prevCount => isActivated ? prevCount + 1 : prevCount - 1);\n+  const updateActiveCells = (isActive) => {\n+    setActiveCells((count) => (isActive ? count + 1 : count - 1));\n   };\n \n   return (\n-    <CellContext.Provider value={{ activeCount, toggleCell }}>\n+    <GridContext.Provider value={{ activeCells, updateActiveCells }}>\n       {children}\n-    </CellContext.Provider>\n+    </GridContext.Provider>\n   );\n };\n \n-export const useCellContext = () => useContext(CellContext);\n+// Custom hook for accessing the grid context\n+export const useGridContext = () => useContext(GridContext);\n"
+                }
+            ],
+            "date": 1730843969242,
+            "name": "Commit-0",
+            "content": "import React, { createContext, useContext, useState } from 'react';\n\nconst CellContext = createContext();\n\nexport const CellProvider = ({ children }) => {\n  const [activeCount, setActiveCount] = useState(0);\n\n  const toggleCell = (isActivated) => {\n    setActiveCount(prevCount => isActivated ? prevCount + 1 : prevCount - 1);\n  };\n\n  return (\n    <CellContext.Provider value={{ activeCount, toggleCell }}>\n      {children}\n    </CellContext.Provider>\n  );\n};\n\nexport const useCellContext = () => useContext(CellContext);\n"
+        }
+    ]
+}
